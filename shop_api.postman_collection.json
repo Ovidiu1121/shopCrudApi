@@ -1,0 +1,140 @@
+{
+	"info": {
+		"_postman_id": "638a4d70-5ad3-4f85-8997-c6813eb6913d",
+		"name": "shop_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33660681"
+	},
+	"item": [
+		{
+			"name": "GetAllShops",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7081/api/v1/Shop/all",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7081",
+					"path": [
+						"api",
+						"v1",
+						"Shop",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7081/api/v1/Shop/Spartan",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7081",
+					"path": [
+						"api",
+						"v1",
+						"Shop",
+						"Spartan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POSTCreateShop",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Pepco\",\r\n  \"location\": \"Ilfov\",\r\n  \"employees\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7081/api/v1/Shop/create",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7081",
+					"path": [
+						"api",
+						"v1",
+						"Shop",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUTUpdateShop",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"employees\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7081/api/v1/Shop/update/7",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7081",
+					"path": [
+						"api",
+						"v1",
+						"Shop",
+						"update",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteShop",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7081/api/v1/Shop/delete/6",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7081",
+					"path": [
+						"api",
+						"v1",
+						"Shop",
+						"delete",
+						"6"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

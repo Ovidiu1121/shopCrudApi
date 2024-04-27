@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "beacb800-8430-41ca-af07-04d645a703a6": {
+      "ProjectGuid": "beacb800-8430-41ca-af07-04d645a703a6",
+      "DisplayName": "ShopCrudApi",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
