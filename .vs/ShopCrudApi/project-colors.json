@@ -5,7 +5,12 @@
       "ProjectGuid": "beacb800-8430-41ca-af07-04d645a703a6",
       "DisplayName": "ShopCrudApi",
       "ColorIndex": 0
+    },
+    "f8564797-4dfa-4e8c-b4fc-49d720fff9cc": {
+      "ProjectGuid": "f8564797-4dfa-4e8c-b4fc-49d720fff9cc",
+      "DisplayName": "tests",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }

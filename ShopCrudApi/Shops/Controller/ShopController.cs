@@ -77,9 +77,9 @@ namespace ShopCrudApi.Shops.Controller
         {
             try
             {
-                var products = await _shopCommandService.UpdateShop(id, request);
+                var shops = await _shopCommandService.UpdateShop(id, request);
 
-                return Ok(products);
+                return Ok(shops);
             }
             catch (ItemDoesNotExist ex)
             {
