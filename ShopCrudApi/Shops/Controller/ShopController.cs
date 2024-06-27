@@ -18,13 +18,13 @@ namespace ShopCrudApi.Shops.Controller
             _shopQueryService = shopQueryService;
         }
 
-        public override async Task<ActionResult<Shop>> CreateShop([FromBody] CreateShopRequest request)
+        public override async Task<ActionResult<ShopDto>> CreateShop([FromBody] CreateShopRequest request)
         {
             try
             {
                 var shops = await _shopCommandService.CreateShop(request);
 
-                return Ok(shops);
+                return Created("Shop-ul a fost creat",shops);
             }
             catch (ItemAlreadyExists ex)
             {
@@ -32,7 +32,7 @@ namespace ShopCrudApi.Shops.Controller
             }
         }
 
-        public override async Task<ActionResult<Shop>> DeleteShop([FromRoute] int id)
+        public override async Task<ActionResult<ShopDto>> DeleteShop([FromRoute] int id)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace ShopCrudApi.Shops.Controller
             }
         }
 
-        public override async Task<ActionResult<IEnumerable<Shop>>> GetAll()
+        public override async Task<ActionResult<ListShopDto>> GetAll()
         {
             try
             {
@@ -59,7 +59,7 @@ namespace ShopCrudApi.Shops.Controller
             }
         }
 
-        public override async Task<ActionResult<Shop>> GetByNameRoute([FromRoute] string name)
+        public override async Task<ActionResult<ShopDto>> GetByNameRoute([FromRoute] string name)
         {
 
             try
@@ -73,7 +73,20 @@ namespace ShopCrudApi.Shops.Controller
             }
         }
 
-        public override async Task<ActionResult<Shop>> UpdateShop([FromRoute] int id, [FromBody] UpdateShopRequest request)
+        public override async Task<ActionResult<ShopDto>> GetByIdRoute(int id)
+        {
+            try
+            {
+                var shop = await _shopQueryService.GetById(id);
+                return Ok(shop);
+            }
+            catch (ItemDoesNotExist ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
+        public override async Task<ActionResult<ShopDto>> UpdateShop([FromRoute] int id, [FromBody] UpdateShopRequest request)
         {
             try
             {

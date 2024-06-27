@@ -5,11 +5,11 @@ namespace ShopCrudApi.Shops.Repository.interfaces
 {
     public interface IShopRepository
     {
-        Task<IEnumerable<Shop>> GetAllAsync();
-        Task<Shop> GetByNameAsync(string name);
-        Task<Shop> GetByIdAsync(int id);
-        Task<Shop> CreateShop(CreateShopRequest request);
-        Task<Shop> UpdateShop(int id, UpdateShopRequest request);
-        Task<Shop> DeleteShopById(int id);
+        Task<ListShopDto> GetAllAsync();
+        Task<ShopDto> GetByNameAsync(string name);
+        Task<ShopDto> GetByIdAsync(int id);
+        Task<ShopDto> CreateShop(CreateShopRequest request);
+        Task<ShopDto> UpdateShop(int id, UpdateShopRequest request);
+        Task<ShopDto> DeleteShopById(int id);
     }
 }

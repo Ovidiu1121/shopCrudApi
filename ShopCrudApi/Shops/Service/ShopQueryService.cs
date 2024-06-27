@@ -1,4 +1,5 @@
-﻿using ShopCrudApi.Shops.Model;
+﻿using ShopCrudApi.Dto;
+using ShopCrudApi.Shops.Model;
 using ShopCrudApi.Shops.Repository.interfaces;
 using ShopCrudApi.Shops.Service.interfaces;
 using ShopCrudApi.System.Constant;
@@ -15,11 +16,11 @@ namespace ShopCrudApi.Shops.Service
             _repository = repository;
         }
 
-        public async Task<IEnumerable<Shop>> GetAllShops()
+        public async Task<ListShopDto> GetAllShops()
         {
-            IEnumerable<Shop> shops = await _repository.GetAllAsync();
+            ListShopDto shops = await _repository.GetAllAsync();
 
-            if (shops.Count().Equals(0))
+            if (shops.shopList.Count().Equals(0))
             {
                 throw new ItemDoesNotExist(Constants.NO_SHOPS_EXIST);
             }
@@ -27,9 +28,9 @@ namespace ShopCrudApi.Shops.Service
             return shops;
         }
 
-        public async Task<Shop> GetById(int id)
+        public async Task<ShopDto> GetById(int id)
         {
-            Shop shop = await _repository.GetByIdAsync(id);
+            ShopDto shop = await _repository.GetByIdAsync(id);
 
             if (shop == null)
             {
@@ -39,9 +40,9 @@ namespace ShopCrudApi.Shops.Service
             return shop;
         }
 
-        public async Task<Shop> GetByName(string name)
+        public async Task<ShopDto> GetByName(string name)
         {
-            Shop shop = await _repository.GetByNameAsync(name);
+            ShopDto shop = await _repository.GetByNameAsync(name);
 
             if (shop == null)
             {

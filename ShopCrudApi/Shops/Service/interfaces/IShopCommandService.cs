@@ -5,8 +5,8 @@ namespace ShopCrudApi.Shops.Service.interfaces
 {
     public interface IShopCommandService
     {
-        Task<Shop> CreateShop(CreateShopRequest request);
-        Task<Shop> UpdateShop(int id, UpdateShopRequest request);
-        Task<Shop> DeleteShop(int id);
+        Task<ShopDto> CreateShop(CreateShopRequest request);
+        Task<ShopDto> UpdateShop(int id, UpdateShopRequest request);
+        Task<ShopDto> DeleteShop(int id);
     }
 }

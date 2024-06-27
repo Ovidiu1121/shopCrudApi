@@ -16,9 +16,9 @@ namespace ShopCrudApi.Shops.Service
             _repository = repository;
         }
 
-        public async Task<Shop> CreateShop(CreateShopRequest request)
+        public async Task<ShopDto> CreateShop(CreateShopRequest request)
         {
-            Shop shop = await _repository.GetByNameAsync(request.Name);
+            ShopDto shop = await _repository.GetByNameAsync(request.Name);
 
             if (shop!=null)
             {
@@ -29,9 +29,9 @@ namespace ShopCrudApi.Shops.Service
             return shop;
         }
 
-        public async Task<Shop> DeleteShop(int id)
+        public async Task<ShopDto> DeleteShop(int id)
         {
-            Shop shop = await _repository.GetByIdAsync(id);
+            ShopDto shop = await _repository.GetByIdAsync(id);
 
             if (shop==null)
             {
@@ -42,9 +42,9 @@ namespace ShopCrudApi.Shops.Service
             return shop;
         }
 
-        public async Task<Shop> UpdateShop(int id, UpdateShopRequest request)
+        public async Task<ShopDto> UpdateShop(int id, UpdateShopRequest request)
         {
-            Shop shop = await _repository.GetByIdAsync(id);
+            ShopDto shop = await _repository.GetByIdAsync(id);
 
             if (shop==null)
             {

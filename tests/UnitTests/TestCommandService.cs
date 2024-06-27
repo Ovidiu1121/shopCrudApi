@@ -79,7 +79,7 @@ namespace tests.UnitTests
         public async Task Delete_ItemDoesNotExist()
         {
 
-            _mock.Setup(repo => repo.DeleteShopById(It.IsAny<int>())).ReturnsAsync((Shop)null);
+            _mock.Setup(repo => repo.DeleteShopById(It.IsAny<int>())).ReturnsAsync((ShopDto)null);
 
             var exception = await Assert.ThrowsAsync<ItemDoesNotExist>(() => _service.DeleteShop(5));
 
@@ -112,7 +112,7 @@ namespace tests.UnitTests
                 Employees=0
             };
 
-            _mock.Setup(repo => repo.GetByIdAsync(1)).ReturnsAsync((Shop)null);
+            _mock.Setup(repo => repo.GetByIdAsync(1)).ReturnsAsync((ShopDto)null);
 
             var exception = await Assert.ThrowsAsync<ItemDoesNotExist>(() => _service.UpdateShop(1, update));
 

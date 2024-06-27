@@ -10,6 +10,7 @@ namespace ShopCrudApi.Mappings
         {
             CreateMap<CreateShopRequest, Shop>();
             CreateMap<UpdateShopRequest, Shop>();
+            CreateMap<ShopDto, Shop>().ReverseMap();
         }
     }
 }

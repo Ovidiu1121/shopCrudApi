@@ -59,9 +59,9 @@ namespace tests.UnitTests
 
             var okresult = Assert.IsType<OkObjectResult>(result.Result);
 
-            var shopsAll = Assert.IsType<List<Shop>>(okresult.Value);
+            var shopsAll = Assert.IsType<ListShopDto>(okresult.Value);
 
-            Assert.Equal(5, shopsAll.Count);
+            Assert.Equal(5, shopsAll.shopList.Count);
             Assert.Equal(200, okresult.StatusCode);
 
 
@@ -110,9 +110,9 @@ namespace tests.UnitTests
 
             var result = await _controller.CreateShop(create);
 
-            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var okResult = Assert.IsType<CreatedResult>(result.Result);
 
-            Assert.Equal(okResult.StatusCode, 200);
+            Assert.Equal(okResult.StatusCode, 201);
             Assert.Equal(shop, okResult.Value);
 
         }

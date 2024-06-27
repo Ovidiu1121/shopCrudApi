@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ShopCrudApi.Dto;
 
 namespace tests.Helpers
 {
     public class TestShopFactory
     {
 
-        public static Shop CreateShop(int id)
+        public static ShopDto CreateShop(int id)
         {
-            return new Shop
+            return new ShopDto
             {
                 Id = id,
                 Name="Emag"+id,
@@ -21,13 +22,13 @@ namespace tests.Helpers
             };
         }
 
-        public static List<Shop> CreateShops(int count)
+        public static ListShopDto CreateShops(int count)
         {
-            List<Shop> shops = new List<Shop>();
+            ListShopDto shops = new ListShopDto();
 
             for (int i = 0; i<count; i++)
             {
-                shops.Add(CreateShop(i));
+                shops.shopList.Add(CreateShop(i));
             }
             return shops;
         }

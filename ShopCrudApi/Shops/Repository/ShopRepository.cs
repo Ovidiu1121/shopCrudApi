@@ -18,7 +18,7 @@ namespace ShopCrudApi.Shops.Repository
             _mapper = mapper;
         }
 
-        public async Task<Shop> CreateShop(CreateShopRequest request)
+        public async Task<ShopDto> CreateShop(CreateShopRequest request)
         {
             var shop = _mapper.Map<Shop>(request);
 
@@ -26,10 +26,10 @@ namespace ShopCrudApi.Shops.Repository
 
             await _context.SaveChangesAsync();
 
-            return shop;
+            return _mapper.Map<ShopDto>(shop);
         }
 
-        public async Task<Shop> DeleteShopById(int id)
+        public async Task<ShopDto> DeleteShopById(int id)
         {
             var shop = await _context.Shops.FindAsync(id);
 
@@ -37,25 +37,36 @@ namespace ShopCrudApi.Shops.Repository
 
             await _context.SaveChangesAsync();
 
-            return shop;
+            return _mapper.Map<ShopDto>(shop);
         }
 
-        public async Task<IEnumerable<Shop>> GetAllAsync()
+        public async Task<ListShopDto> GetAllAsync()
         {
-            return await _context.Shops.ToListAsync();
+            List<Shop> shop = await _context.Shops.ToListAsync();
+            
+            ListShopDto listShopDto = new ListShopDto()
+            {
+                shopList = _mapper.Map<List<ShopDto>>(shop)
+            };
+
+            return listShopDto;
         }
 
-        public async Task<Shop> GetByIdAsync(int id)
+        public async Task<ShopDto> GetByIdAsync(int id)
         {
-            return await _context.Shops.FirstOrDefaultAsync(obj => obj.Id.Equals(id));
+            var shop = await _context.Shops.Where(s => s.Id == id).FirstOrDefaultAsync();
+            
+            return _mapper.Map<ShopDto>(shop);
         }
 
-        public async Task<Shop> GetByNameAsync(string name)
+        public async Task<ShopDto> GetByNameAsync(string name)
         {
-            return await _context.Shops.FirstOrDefaultAsync(obj => obj.Name.Equals(name));
+            var shop = await _context.Shops.Where(s => s.Name.Equals(name)).FirstOrDefaultAsync();
+            
+            return _mapper.Map<ShopDto>(shop);
         }
 
-        public async Task<Shop> UpdateShop(int id, UpdateShopRequest request)
+        public async Task<ShopDto> UpdateShop(int id, UpdateShopRequest request)
         {
             var shop = await _context.Shops.FindAsync(id);
 
@@ -67,7 +78,7 @@ namespace ShopCrudApi.Shops.Repository
 
             await _context.SaveChangesAsync();
 
-            return shop;
+            return _mapper.Map<ShopDto>(shop);
         }
     }
 }
